@@ -1,3 +1,6 @@
+import 'package:elvtrix_ui_task/core/themes/app_color.dart';
+import 'package:elvtrix_ui_task/core/ui_screen/login_screen.dart';
+import 'package:elvtrix_ui_task/core/ui_screen/signUp_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,23 +16,24 @@ class _HomeScreenState extends State<HomeScreen> {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        backgroundColor: Colors.amber[100],
+        backgroundColor: AppColors.lightOrange,
         title: const Text('Choose Action'),
         content: const Text('Please select Login or Sign Up to continue.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context); // Close dialog
-              Navigator.pushNamed(context, '/login'); // Navigate to login screen
+              // Navigator.pushNamed(context, '/login'); //
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
             },
-            child: const Text("Login"),
+            child: const Text("Login",style:  TextStyle(fontSize: 22),),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(context); // Close dialog
-              Navigator.pushNamed(context, '/signup'); // Navigate to signup screen
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));
             },
-            child: const Text("Sign Up"),
+            child: const Text("Sign Up",style:  TextStyle(fontSize: 22),),
           ),
         ],
       ),
@@ -40,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFEFE5C1),
+        backgroundColor: AppColors.vanilla,
 
         body: Column(
           children: [
@@ -75,7 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
                    showLoginSignupDialog(context);
                   },
                   child: Container(
-                    height: 80,
+                    height: 60,
                     width: 350,
                     decoration: BoxDecoration(
                       color: Color(0xffe9b860),
@@ -87,15 +91,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 50,
                   ),
-                  Container(
-                    height: 80,
-                    width: 350,
-                    decoration: BoxDecoration(
-                      color: Color(0xffe9b860),
-                      borderRadius: BorderRadius.circular(20),
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                    },
+                    child: Container(
+                      height: 60,
+                      width: 350,
+                      decoration: BoxDecoration(
+                        color: Color(0xffe9b860),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Center(child: Text("Already have account",style: TextStyle(fontSize: 22,
+                          fontWeight: FontWeight.bold,color: Colors.black),)),
                     ),
-                    child: Center(child: Text("Already have account",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),)),
-                  )
+                  ),
                 ],
               ),
             ))
