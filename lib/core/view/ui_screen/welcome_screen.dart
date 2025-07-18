@@ -1,7 +1,8 @@
 import 'package:elvtrix_ui_task/core/themes/app_color.dart';
-import 'package:elvtrix_ui_task/core/ui_screen/login_screen.dart';
-import 'package:elvtrix_ui_task/core/ui_screen/signUp_screen.dart';
+import 'package:elvtrix_ui_task/core/view/ui_screen/signUp_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

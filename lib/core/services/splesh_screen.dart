@@ -1,7 +1,7 @@
 import 'dart:async';
-
-import 'package:elvtrix_ui_task/core/ui_screen/home_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../view/ui_screen/welcome_screen.dart';
 
 class SpleshScreen extends StatefulWidget {
   const SpleshScreen({super.key});

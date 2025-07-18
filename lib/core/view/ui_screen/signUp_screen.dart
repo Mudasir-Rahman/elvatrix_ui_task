@@ -1,5 +1,5 @@
 import 'package:elvtrix_ui_task/core/themes/app_color.dart';
-import 'package:elvtrix_ui_task/core/ui_screen/login_screen.dart';
+import 'login_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
