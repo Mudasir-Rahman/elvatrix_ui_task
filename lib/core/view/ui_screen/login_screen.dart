@@ -58,8 +58,6 @@ Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
         SnackBar(content: Text(state.message)),
       );
     }
-
-
   },
   child: Form(
          key: formKey,

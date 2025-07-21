@@ -1,4 +1,5 @@
 import 'package:elvtrix_ui_task/blocs/auth/auth_login/auth_login_bloc.dart';
+import 'package:elvtrix_ui_task/blocs/auth/auth_signup/auth_signup_bloc.dart';
 import 'package:elvtrix_ui_task/core/repository/auth_firebase_repository.dart';
 import 'package:elvtrix_ui_task/core/services/splesh_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,11 +20,16 @@ void main() async {
 
   // Run the app with BlocProvider
   runApp(
-    BlocProvider<AuthBloc>(
-      create: (_) => AuthBloc(authRepository: authRepository),
-      child: const MyApp(),
-    ),
-  );
+    MultiBlocProvider(providers:
+        [BlocProvider<AuthBloc>(
+      create: (_) => AuthBloc(authRepository: authRepository)),
+
+BlocProvider<AuthSignupBloc>(
+  create: (_)=>AuthSignupBloc(authRepository:authRepository)),
+
+  
+  ], child:  const MyApp(),
+    ));
 }
 
 class MyApp extends StatelessWidget {

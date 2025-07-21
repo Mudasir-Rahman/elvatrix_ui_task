@@ -8,6 +8,11 @@ class AuthRepository{
         password: password);
   return result.user;
   }
+  Future<User?> signUp({required String email ,required String password}) async{
+    final result= await firebaseAuth.createUserWithEmailAndPassword(email: email,
+        password: password);
+    return result.user;
+  }
   Future<void> signOut() async {
     await firebaseAuth.signOut();
   }

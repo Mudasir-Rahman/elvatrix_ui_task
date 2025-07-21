@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'login_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> {
 
   void showLoginSignupDialog(BuildContext context) {
     showDialog(
@@ -46,6 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.vanilla,
+        appBar: AppBar(
+          title: Text("Welcome"),
+        ),
 
         body: Column(
           children: [

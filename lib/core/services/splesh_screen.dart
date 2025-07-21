@@ -1,7 +1,6 @@
-import 'dart:async';
+import 'package:elvtrix_ui_task/core/services/splesh_serviced.dart';
 import 'package:flutter/material.dart';
 
-import '../view/ui_screen/welcome_screen.dart';
 
 class SpleshScreen extends StatefulWidget {
   const SpleshScreen({super.key});
@@ -11,15 +10,12 @@ class SpleshScreen extends StatefulWidget {
 }
 
 class _SpleshScreenState extends State<SpleshScreen> {
+  final SplashServices splashServices = SplashServices();
+
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5), () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
-      );
-    });
+    splashServices.checkUserLoginStatus(context); // ✅ call here
   }
 
   @override
@@ -29,7 +25,7 @@ class _SpleshScreenState extends State<SpleshScreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               'Welcome',
               style: TextStyle(
@@ -39,7 +35,7 @@ class _SpleshScreenState extends State<SpleshScreen> {
                 letterSpacing: 2,
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(height: 20),
             Text(
               'We are glad to see you!',
               style: TextStyle(
