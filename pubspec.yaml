@@ -68,14 +68,6 @@ flutter:
   # To add image to your application, add an image section, like this:
   assets:
     - assets/images/
-#    - assets/images/home_pic.jpeg
-#    - assets/images/spleshpic.jpeg
-#    - assets/images/home_screen2.jpeg
-#    - assets/images/loginscreen.jpeg
-#    - assets/images/all.jpeg
-#    - assets/images/salad.jpeg
-#    - assets/images/fast.jpeg
-#    - assets/images/fruit.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
