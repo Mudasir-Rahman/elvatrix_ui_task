@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:elvtrix_ui_task/core/services/splesh_screen.dart';
-import 'package:elvtrix_ui_task/core/view/home/home_Screen.dart';
+import 'package:elvtrix_ui_task/core/ui/home_Screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../view/ui_screen/welcome_screen.dart';
+
+import '../view/sign_login_screen/welcome_screen.dart';
+
 
 class SplashServices {
   void checkUserLoginStatus(BuildContext context) {

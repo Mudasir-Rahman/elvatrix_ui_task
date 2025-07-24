@@ -3,7 +3,7 @@ import 'package:elvtrix_ui_task/blocs/auth/auth_signup/auth_signup_event.dart';
 import 'package:elvtrix_ui_task/blocs/auth/auth_signup/auth_signup_state.dart';
 import 'package:elvtrix_ui_task/core/themes/app_color.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../home/home_Screen.dart';
+import '../../ui/home_Screen.dart';
 import 'login_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
