@@ -3,7 +3,7 @@ import 'package:elvtrix_ui_task/blocs/auth/auth_signup/auth_signup_event.dart';
 import 'package:elvtrix_ui_task/blocs/auth/auth_signup/auth_signup_state.dart';
 import 'package:elvtrix_ui_task/core/themes/app_color.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../ui/home_Screen.dart';
+import '../../home_ui/home_main_Screen.dart';
 import 'login_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             );
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HomeScreen()),
+              MaterialPageRoute(builder: (context) => HomeMainScreen()),
             );
           } else if (state is AuthSignupFailureState) {
             Navigator.pop(context); // close loading

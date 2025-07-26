@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:elvtrix_ui_task/core/services/splesh_screen.dart';
-import 'package:elvtrix_ui_task/core/ui/home_Screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../home_ui/home_main_Screen.dart';
 import '../view/sign_login_screen/welcome_screen.dart';
 
 
@@ -16,7 +16,7 @@ class SplashServices {
         // User is logged in
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (_) => const HomeScreen()),
+          MaterialPageRoute(builder: (_) => HomeMainScreen()),
         );
       } else {
         // User not logged in

@@ -10,14 +10,14 @@ import 'package:carousel_slider/carousel_controller.dart';
 import '../product_data_models/product.dart';
 import '../view/home/app_menu/all_categoris/all_categoris_food.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeMainScreen extends StatefulWidget {
+  const HomeMainScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeMainScreen> createState() => _HomeMainScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeMainScreenState extends State<HomeMainScreen> {
   final List<Product> localImages = [
     Product(image: 'assets/images/slider.jpeg'),
     Product(image: 'assets/images/slider1.jpeg'),

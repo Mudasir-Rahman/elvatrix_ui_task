@@ -69,6 +69,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               "Price: \$${product.safePrice}",
               style: const TextStyle(fontSize: 18, color: Colors.black),
             ),
+            IconButton(onPressed: (){
+
+            }, icon: Icon(Icons.shopping_cart_checkout_outlined)),
             const Spacer(),
             ElevatedButton(
               onPressed: () {

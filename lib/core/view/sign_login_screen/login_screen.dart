@@ -2,8 +2,8 @@ import 'package:elvtrix_ui_task/blocs/auth/auth_login/auth_login_bloc.dart';
 import 'package:elvtrix_ui_task/blocs/auth/auth_login/auth_login_event.dart';
 import 'package:elvtrix_ui_task/blocs/auth/auth_login/auth_login_state.dart';
 import 'package:elvtrix_ui_task/core/themes/app_color.dart';
-import 'package:elvtrix_ui_task/core/ui/home_Screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../home_ui/home_main_Screen.dart';
 import 'signUp_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }else if(state is AuthSuccessState){
 Navigator.pop(context);
 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Login Successful "),));
-Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen()));
+Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeMainScreen()));
     }else if (state is AuthFailureState) {
       Navigator.pop(context); // Close loading dialog
       ScaffoldMessenger.of(context).showSnackBar(
