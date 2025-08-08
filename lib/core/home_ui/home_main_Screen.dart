@@ -1,12 +1,19 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:elvtrix_ui_task/blocs/cart/cart_bloc.dart';
+import 'package:elvtrix_ui_task/blocs/wishlist/wishlist_bloc.dart';
+import 'package:elvtrix_ui_task/constans/bottom_navigation_batton.dart';
+import 'package:elvtrix_ui_task/core/cart_ui/cartlist_ui.dart';
+import 'package:elvtrix_ui_task/core/home_ui/home_component/side_menu_drawer.dart';
+import 'package:elvtrix_ui_task/core/repository/auth_firebase_repository.dart';
 import 'package:elvtrix_ui_task/core/themes/app_color.dart';
 import 'package:elvtrix_ui_task/core/view/home/app_menu/all_categoris/fast_food.dart';
 import 'package:elvtrix_ui_task/core/view/home/app_menu/all_categoris/fruit_food.dart';
 import 'package:elvtrix_ui_task/core/view/home/app_menu/all_categoris/salad_food.dart';
 import 'package:elvtrix_ui_task/core/view/home/choseCategoris.dart';
 import 'package:elvtrix_ui_task/core/view/home/trendingCard/trending_card.dart';
+import 'package:elvtrix_ui_task/core/wishlist_ui/wishlist_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_controller.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../product_data_models/product.dart';
 import '../view/home/app_menu/all_categoris/all_categoris_food.dart';
 
@@ -18,16 +25,63 @@ class HomeMainScreen extends StatefulWidget {
 }
 
 class _HomeMainScreenState extends State<HomeMainScreen> {
+  int currentIndex = 0;
+  void onTapTapped(int index) {
+    if (index == currentIndex) return;
+    setState(() {
+      currentIndex = index;
+    });
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => WishlistUi(),
+        ),
+      );
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_)=> CartListUI(),
+          ),
+      );
+    }
+  }
+
   final List<Product> localImages = [
-    Product(image: 'assets/images/slider.jpeg'),
-    Product(image: 'assets/images/slider1.jpeg'),
-    Product(image: 'assets/images/slider2.jpeg'),
-    Product(image: 'assets/images/slider3.jpeg'),
+    Product( image: 'assets/images/slider.jpeg'),
+    Product( image: 'assets/images/slider1.jpeg'),
+    Product( image: 'assets/images/slider2.jpeg'),
+    Product( image: 'assets/images/slider3.jpeg'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Cigar Cafe"),
+        centerTitle: true,
+        backgroundColor: Colors.orangeAccent,
+        actions: <Widget>[
+          IconButton(onPressed: (){
+          }, icon: (Icon(Icons.notifications))),
+        ],
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          )
+        ),
+      ),
+      drawer: SideMenuDrawer(authRepository: AuthRepository(),),
       backgroundColor: AppColors.vanilla,
       body: ListView(
         padding: EdgeInsets.zero,
@@ -79,8 +133,10 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AllCategoris()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AllCategoris()),
+                      );
                     },
                     child: ChoseCategoris(
                       name: 'All',
@@ -92,8 +148,10 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => SaladFood()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SaladFood()),
+                      );
                     },
                     child: ChoseCategoris(
                       name: 'Salad',
@@ -105,8 +163,10 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => FastFood()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FastFood()),
+                      );
                     },
                     child: ChoseCategoris(
                       name: 'Fast Food',
@@ -125,8 +185,10 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => AllCategoris()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AllCategoris()),
+                      );
                     },
                     child: ChoseCategoris(
                       name: 'Burger',
@@ -138,8 +200,10 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => FruitFood()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FruitFood()),
+                      );
                     },
                     child: ChoseCategoris(
                       name: 'Fruit',
@@ -151,8 +215,10 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => FastFood()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => FastFood()),
+                      );
                     },
                     child: ChoseCategoris(
                       name: 'Pizza',
@@ -187,31 +253,76 @@ class _HomeMainScreenState extends State<HomeMainScreen> {
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 TrendingCard(
-                    product: Product(
-                        image: 'assets/images/all.jpeg', title: "Mix Yummy",category: 'All in One',price: '100')),
+                  product: Product(
+
+                    image: 'assets/images/all.jpeg',
+                    title: "Mix Yummy",
+                    category: 'All in One',
+                    price: '100',
+                  ),
+                ),
                 TrendingCard(
-                    product: Product(
-                        image: 'assets/images/salad.jpeg',
-                        title: "Salad Vegetarian",category: 'Salad',price: '10')),
+                  product: Product(
+
+                    image: 'assets/images/salad.jpeg',
+                    title: "Salad Vegetarian",
+                    category: 'Salad',
+                    price: '10',
+                  ),
+                ),
                 TrendingCard(
-                    product:
-                    Product(image: 'assets/images/fruit.jpeg', title: "Fruit Yummy",category: 'Fruit',price: '20')),
+                  product: Product(
+
+                    image: 'assets/images/fruit.jpeg',
+                    title: "Fruit Yummy",
+                    category: 'Fruit',
+                    price: '20',
+                  ),
+                ),
                 TrendingCard(
-                    product:
-                    Product(image: 'assets/images/slider.jpeg', title: "Burger",category: 'Fast Food',price: '20')),
+                  product: Product(
+
+                    image: 'assets/images/slider.jpeg',
+                    title: "Burger",
+                    category: 'Fast Food',
+                    price: '20',
+                  ),
+                ),
                 TrendingCard(
-                    product:
-                    Product(image: 'assets/images/slider1.jpeg', title: "Pizza",category: 'Fast Food',price: '300')),
+                  product: Product(
+
+                    image: 'assets/images/slider1.jpeg',
+                    title: "Pizza",
+                    category: 'Fast Food',
+                    price: '300',
+                  ),
+                ),
                 TrendingCard(
-                    product:
-                    Product(image: 'assets/images/slider2.jpeg', title: "Mix Fruit",category: 'Vageterian',price: '40')),
+                  product: Product(
+
+                    image: 'assets/images/slider2.jpeg',
+                    title: "Mix Fruit",
+                    category: 'Vageterian',
+                    price: '40',
+                  ),
+                ),
                 TrendingCard(
-                    product:
-                    Product(image: 'assets/images/slider3.jpeg', title: "Fish",category: 'Best',price: '40')),
+                  product: Product(
+
+                    image: 'assets/images/slider3.jpeg',
+                    title: "Fish",
+                    category: 'Best',
+                    price: '40',
+                  ),
+                ),
               ],
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBatton(
+        currentIndex: currentIndex,
+        onTop: onTapTapped,
       ),
     );
   }
